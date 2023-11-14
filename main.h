@@ -1,6 +1,8 @@
 #ifndef main_H
 #define main_H
-
+#include<stdio.h>
+#include<stdarg.h>
+#include<stdlib.h>
 /*
  * File: main.h
  * auth: me
