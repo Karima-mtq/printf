@@ -45,7 +45,31 @@ typedef struct parameters
 	unsigned int unsign : 1;
 	unsigned int plus_flag : 1;
 	unsigned int space_flag : 1;
-	unsigned int hashtag_flag : 1;
+	unsigned int hashtag_flag : 1int print_address(va_list ap, params_t *params);
+	int print_unsigned(va_list ap, pramas_t *params);
+	char *convert(long int num, int base, int flags, params_t *params);
+	
+	char *get_width(char *s, params_t *params, va_list ap);
+	int get_modifier(char *s, params_t *params);
+	int get_flag(char *s, params_t *params);
+	int get_print_func(char *s, va_list ap, params_t *params);
+	int (*get_specifier(char *s))(va_list ap, params_t *params)int print_address(va_list ap, params_t *params);
+	int print_unsigned(va_list ap, pramas_t *params);
+	char *convert(long int num, int base, int flags, params_t *params);
+	
+	char *get_width(char *s, params_t *params, va_list ap);
+	int get_modifier(char *s, params_t *params);
+	int get_flag(char *s, params_t *params);
+	int get_print_func(char *s, va_list ap, params_t *params);
+	int (*get_specifier(char *s))(va_list ap, params_t *params)int print_address(va_list ap, params_t *params);
+	int print_unsigned(va_list ap, pramas_t *params);
+	char *convert(long int num, int base, int flags, params_t *params);
+	
+	char *get_width(char *s, params_t *params, va_list ap);
+	int get_modifier(char *s, params_t *params);
+	int get_flag(char *s, params_t *params);
+	int get_print_func(char *s, va_list ap, params_t *params);
+	int (*get_specifier(char *s))(va_list ap, params_t *param);
 	unsigned int zero_flag : 1;
 	unsigned int minus_flag :1;
 	unsigned int width;
@@ -88,6 +112,20 @@ void init_params(params_t *params, va_list ap);
 /* string_fields.c module */
 char *get_precision(char *p, params_t *params, va_list ap);
 
+int print_octal(va_list ap, params_t *params);
+int print_binary(va_list ap, params_t *params);
+int print_HEX(va_list ap, params_t *params);
+int print_hex(va_list ap, params_t *params);
+
+int print_address(va_list ap, params_t *params);
+int print_unsigned(va_list ap, pramas_t *params);
+char *convert(long int num, int base, int flags, params_t *params);
+
+char *get_width(char *s, params_t *params, va_list ap);
+int get_modifier(char *s, params_t *params);
+int get_flag(char *s, params_t *params);
+int get_print_func(char *s, va_list ap, params_t *params);
+int (*get_specifier(char *s))(va_list ap, params_t *params);
 /*_printf */
 int _printf(const char *format, ...);
 #endif
