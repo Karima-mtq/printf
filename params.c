@@ -1,4 +1,4 @@
-#include "main.c"
+#include "main.h"
 
 /**
  * init_params - reset to 0
