@@ -8,7 +8,7 @@
 
 int _printf(const char *format, ...)
 {
-	int sum = 0;
+	int somme = 0;
 	va_list ap;
 	char *p, *start;
 	params_t params = PARAMS_INIT;
@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		init_params(&params, ap);
 		if (*p != '%')
 		{
-			sum += _putchar(*p);
+			somme += _putchar(*p);
 			continue;
 		}
 		start = p;
@@ -38,12 +38,12 @@ int _printf(const char *format, ...)
 		if (get_modifier(p, &params))
 			p++;
 		if (!get_specifier(p))
-			sum += print_from_to(start, p,
+			somme += print_from_to(start, p,
 					params.l_modifier || params.h_modifier ? p - 1 : 0);
 		else
-			sum += get_print_func(p, ap, &params);
+			somme += get_print_func(p, ap, &params);
 	}
 	_putchar(BUF_FLUSH);
 	va_end(ap);
-	return (sum);
+	return (somme);
 }
