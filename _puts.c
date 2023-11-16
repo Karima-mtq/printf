@@ -7,11 +7,11 @@
  */
 int _puts(char *str)
 {
-	char *a = str;
+	char *s = str;
 
 	while (*str)
 		_putchar(*str++);
-	return (str - a);
+	return (str - s);
 
 }
 /**
@@ -21,15 +21,15 @@ int _puts(char *str)
  */
 int _putchar(int c)
 {
-	static int i;
+	static int j;
 	static char buf[OUTPUT_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= OUTPUT_BUF_SIZE)
+	if (c == BUF_FLUSH || j >= OUTPUT_BUF_SIZE)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, j);
+		j = 0;
 	}
 	if (c != BUF_FLUSH)
-		buf[i++] = c;
+		buf[j++] = c;
 	return (1);
 }
