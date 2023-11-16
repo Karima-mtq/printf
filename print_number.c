@@ -18,7 +18,7 @@ int _strlen(char *s)
 	int l = 0;
 
 	while (*s++)
-		i++;
+		l++;
 	return (l);
 }
 /**
@@ -30,9 +30,9 @@ int _strlen(char *s)
 int print_number(char *str, params_t *params)
 {
 	unsigned int i = _strlen(str);
-	int neg = (!params->unsign && *st == '-')
-
-		if (!params->precision && *str == '0' && !str[1])
+	int neg = (!params->unsign && *str == '-');
+	
+	if (!params->precision && *str == '0' && !str[1])
 			str = "";
 	if (neg)
 	{
@@ -60,7 +60,7 @@ int print_number(char *str, params_t *params)
 
 int print_number_right_shift(char *str, params_t *params)
 {
-	unsigned int n = 0, neg, beg2, i = _strlen(str);
+	unsigned int n = 0, neg, neg2, i = _strlen(str);
 	char pad_char = ' ';
 
 	if (params->zero_flag && !params->minus_flag)

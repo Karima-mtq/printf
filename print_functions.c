@@ -8,7 +8,7 @@
  */
 int print_char(va_list ap, params_t *params)
 {
-	char par_char = ' ';
+	char pad_char = ' ';
 	unsigned int pad = 1, sum = 0, ch = va_arg(ap, int);
 
 	if (params->minus_flag)
@@ -62,7 +62,7 @@ int print_string(va_list ap, params_t *params)
 
 	if (params->minus_flag)
 	{
-		if (params->prescision != UINT_MAX)
+		if (params->precision != UINT_MAX)
 			for (i = 0; i < pad; i++)
 				sum += _putchar(*str++);
 		else
@@ -99,7 +99,7 @@ int print_percent(va_list ap, params_t *params)
  * @params: param
  * Return: int
  */
-int print_S(va_list ap, params_t params)
+int print_S(va_list ap, params_t *params)
 {
 	char *str = va_arg(ap, char *);
 	char *hex;

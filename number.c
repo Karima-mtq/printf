@@ -26,7 +26,7 @@ char *convert(long int num, int base, int flags, params_t *params)
 	*ptr = '\0';
 
 	do {
-		*--ptr = arrat[n % base];
+		*--ptr = array[n % base];
 		n /= base;
 	} while (n != 0);
 
@@ -42,7 +42,7 @@ char *convert(long int num, int base, int flags, params_t *params)
  * Return: int
  */
 
-int print_unsigned(va_list ap, pramas_t *params)
+int print_unsigned(va_list ap, params_t *params)
 {
 	unsigned long l;
 
@@ -53,7 +53,7 @@ int print_unsigned(va_list ap, pramas_t *params)
 	else
 		l = (unsigned int)va_arg(ap, unsigned int);
 	params->unsign = 1;
-	return (print_number(convert(1, 10, CONVERT_UNSIGNED, params) params));
+	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**

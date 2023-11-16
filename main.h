@@ -85,7 +85,7 @@ int print_address(va_list ap, params_t *params);
 /*convert_number.c*/
 int print_hex(va_list ap, params_t *params);
 int print_HEX(va_list ap, params_t *params);
-int print_bianry(va_list ap, params_t *params);
+int print_binary(va_list ap, params_t *params);
 int print_octal(va_list ap, params_t *params);
 
 /*simple_printers*/
@@ -115,7 +115,7 @@ int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ap);
 
 /*string_fields.c*/
-char *get_precision(char *p, params_t *params, va_list ap)
+char *get_precision(char *p, params_t *params, va_list ap);
 
 /*_printf */
 int _printf(const char *format, ...);
