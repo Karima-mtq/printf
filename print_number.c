@@ -13,7 +13,7 @@ int _isdigit(int c)
  * @s: string
  * Return: int
  */
-int _strlen(char s)
+int _strlen(char *s)
 {
 	int l = 0;
 
