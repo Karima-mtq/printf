@@ -112,7 +112,7 @@ int print_S(va_list ap, params_t *params)
 		if ((*str > 0 && *str < 32) || *str >= 127)
 		{
 			sum += _putchar('\\');
-			sum += _putchar('X');
+			sum += _putchar('x');
 			hex = convert(*str, 16, 0, params);
 			if (!hex[1])
 				sum += _putchar('0');
