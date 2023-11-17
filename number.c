@@ -12,7 +12,7 @@ char *convert(long int num, int base, int flags, params_t *params)
 	static char *array;
 	static char buffer[50];
 	char sign = 0;
-	char *ptr;
+	char *p;
 	unsigned long n = num;
 	(void)params;
 
@@ -22,17 +22,17 @@ char *convert(long int num, int base, int flags, params_t *params)
 		sign = '-';
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
-	ptr = &buffer[49];
-	*ptr = '\0';
+	p = &buffer[49];
+	*p = '\0';
 
 	do {
-		*--ptr = array[n % base];
+		*--p = array[n % base];
 		n /= base;
 	} while (n != 0);
 
 	if (sign)
-		*--ptr = sign;
-	return (ptr);
+		*--p = sign;
+	return (p);
 }
 
 /**
@@ -44,16 +44,16 @@ char *convert(long int num, int base, int flags, params_t *params)
 
 int print_unsigned(va_list ap, params_t *params)
 {
-	unsigned long l;
+	unsigned long i;
 
 	if (params->l_modifier)
-		l = (unsigned long)va_arg(ap, unsigned long);
+		i = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		l = (unsigned short int)va_arg(ap, unsigned int);
+		i = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		l = (unsigned int)va_arg(ap, unsigned int);
+		i = (unsigned int)va_arg(ap, unsigned int);
 	params->unsign = 1;
-	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
+	return (print_number(convert(i, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**
@@ -65,14 +65,14 @@ int print_unsigned(va_list ap, params_t *params)
 
 int print_address(va_list ap, params_t *params)
 {
-	unsigned long int n = va_arg(ap, unsigned long int);
-	char *str;
+	unsigned long int i = va_arg(ap, unsigned long int);
+	char *s;
 
-	if (!n)
+	if (!i)
 		return (_puts("(nil)"));
 
-	str = convert(n, 16, CONVERT_UNSIGNED || CONVERT_LOWERCASE, params);
-	*--str = 'x';
-	*--str = '0';
-	return (print_number(str, params));
+	s = convert(i, 16, CONVERT_UNSIGNED || CONVERT_LOWERCASE, params);
+	*--s = 'x';
+	*--s = '0';
+	return (print_number(s, params));
 }
